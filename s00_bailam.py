@@ -41,6 +41,34 @@ get_24hformat_hour('11 PM')            | 23                     | 12
 #endregion debai
 
 #region bailam
+import re
+
 def get_24hformat_hour(hour_str):
-  return 'todo'
+  hour_str=hour_str.lower()
+  wordy=re.findall('am|pm',hour_str)
+  numy=re.findall(r'\d+',hour_str)
+  num = numy[0]
+  num = num[:2]
+  num = num.replace(' ','').replace(':','')
+  num = int(num)
+  try:
+    word=str(wordy[0]).lower()
+  except:
+    pass
+
+  if numy!=[] and wordy!=[]:
+    if word=='pm' and num >= 1 and num<=5:
+      return str(num+12)
+    elif word=='pm' and num>=6 and num<=12:
+      return str(num+12)
+    elif num<=12:
+      return str(num)
+  elif numy!=[] and wordy==[]:
+    if num>=0 and num<=12:
+      return str(num)
+    elif num>=12 and num<=17:
+      return str(num)
+    elif num<=24:
+      return str(num)
+  return 'SAO MÀY NGU THẾ, NHẬP CŨNG SAI!'
 #endregion bailam
