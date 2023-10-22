@@ -70,5 +70,4 @@ def get_24hformat_hour(hour_str):
       return str(num)
     elif num<=24:
       return str(num)
-  return 'SAO MÀY NGU THẾ, NHẬP CŨNG SAI!'
 #endregion bailam
