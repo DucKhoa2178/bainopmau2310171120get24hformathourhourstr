@@ -52,22 +52,15 @@ def get_24hformat_hour(hour_str):
   num = num.replace(' ','').replace(':','')
   num = int(num)
   try:
-    word=str(wordy[0]).lower()
+    word = str(wordy[0]).lower()
   except:
-    pass
+    word=None
 
-  if numy!=[] and wordy!=[]:
-    if word=='pm' and num >= 1 and num<=5:
+  if numy!=[] and wordy==[]:
+      return str(num)
+  elif numy!=[] and wordy!=[]:
+    if word=='pm':
       return str(num+12)
-    elif word=='pm' and num>=6 and num<=12:
-      return str(num+12)
-    elif num<=12:
-      return str(num)
-  elif numy!=[] and wordy==[]:
-    if num>=0 and num<=12:
-      return str(num)
-    elif num>=12 and num<=17:
-      return str(num)
-    elif num<=24:
+    else:
       return str(num)
 #endregion bailam
